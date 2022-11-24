@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import Loading from '../Shared/Loading/Loading';
 
 const Login = () => {
 
     const { register,formState: { errors }, handleSubmit } = useForm();
+    const {loginUser, loading} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
+
+    // if(loading){
+    //     return <Loading></Loading>
+    // }
 
     const handleLogin = data => {
         console.log(data);
+
+        loginUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            navigate(from, {replace: true});
+            
+
+        })
+        .catch(error => console.log(error))
     }
 
     return (
@@ -24,7 +45,7 @@ const Login = () => {
                             {...register("email", { required: "Email is required" })}
                             type="email" className="input input-bordered w-full max-w-xs" />
                         <input />
-                        {errors.email && <p role="alert">{errors.email?.message}</p>}
+                        {errors.email && <p className='text-error' role="alert">{errors.email?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
@@ -34,6 +55,7 @@ const Login = () => {
                             {...register("password", { required: "Password is required" })}
                             type="password" className="input input-bordered w-full max-w-xs" />
                         <input />
+                        {errors.password && <p className='text-error' role="alert">{errors.password?.message}</p>}
                     </div>
                     <input className='btn w-full' value='Login' type="submit" />
                 
