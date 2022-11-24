@@ -1,9 +1,10 @@
 import React from 'react';
+import banner from '../../../Assets/images/banner.png';
 
 const Home = () => {
     return (
         <div>
-            <h2 className="text-4xl">This is home</h2>
+            <img className='rounded-lg' src={banner} alt="" />
         </div>
     );
 };
