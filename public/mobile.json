@@ -1,0 +1,83 @@
+[
+    {
+        "id": "1",
+        "categoryName": "Button Phone",
+        "categoryImg": "https://www.yugatech.com/wp-content/uploads/2020/05/C26DC8DC-4597-46D4-BC23-151AF4E15AEA.png",
+        "categoryItem": [
+            {
+                "name": "Nokia",
+                "sellerName": "Salman Khan",
+                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "location": "Dhanmondi",
+                "resalePrice": "5000",
+                "original": "8000",
+                "yearUsed": "2",
+                "posted": ""
+            },
+            {
+                "name": "Samsung",
+                "sellerName": "Salman Khan",
+                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "location": "Dhanmondi",
+                "resalePrice": "5000",
+                "original": "8000",
+                "yearUsed": "2",
+                "posted": ""
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "categoryName": "Smart Phone (Mid-Budget)",
+        "categoryImg": "https://i.insider.com/5e83a064671de02c622dfd06?width=1200&format=jpeg",
+        "categoryItem": [
+            {
+                "name": "Nokia",
+                "sellerName": "Salman Khan",
+                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "location": "Dhanmondi",
+                "resalePrice": "5000",
+                "original": "8000",
+                "yearUsed": "2",
+                "posted": ""
+            },
+            {
+                "name": "Samsung",
+                "sellerName": "Salman Khan",
+                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "location": "Dhanmondi",
+                "resalePrice": "5000",
+                "original": "8000",
+                "yearUsed": "2",
+                "posted": ""
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "categoryName": "Smart Phone (High Budget)",
+        "categoryImg": "https://www.yugatech.com/wp-content/uploads/2020/05/C26DC8DC-4597-46D4-BC23-151AF4E15AEA.png",
+        "categoryItem": [
+            {
+                "name": "Nokia",
+                "sellerName": "Salman Khan",
+                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "location": "Dhanmondi",
+                "resalePrice": "5000",
+                "original": "8000",
+                "yearUsed": "2",
+                "posted": ""
+            },
+            {
+                "name": "Samsung",
+                "sellerName": "Salman Khan",
+                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "location": "Dhanmondi",
+                "resalePrice": "5000",
+                "original": "8000",
+                "yearUsed": "2",
+                "posted": ""
+            }
+        ]
+    }
+]
