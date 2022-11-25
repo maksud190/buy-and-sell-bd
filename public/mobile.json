@@ -1,82 +1,82 @@
 [
     {
-        "id": "1",
+        
         "categoryName": "Button Phone",
         "categoryImg": "https://www.yugatech.com/wp-content/uploads/2020/05/C26DC8DC-4597-46D4-BC23-151AF4E15AEA.png",
         "categoryItem": [
             {
-                "name": "Nokia",
+                "name": "Nokia 150",
                 "sellerName": "Salman Khan",
-                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "image": "https://www.classyprice.com.bd/images/Nokia-150-2020-Red.jpg",
                 "location": "Dhanmondi",
                 "resalePrice": "5000",
                 "original": "8000",
                 "yearUsed": "2",
-                "posted": ""
+                "posted": "25 nov, 2022"
             },
             {
-                "name": "Samsung",
-                "sellerName": "Salman Khan",
-                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
-                "location": "Dhanmondi",
+                "name": "Samsung guru music 2",
+                "sellerName": "Shahruk Khan",
+                "image": "https://www.mobileghor.com/wp-content/uploads/2020/08/Samsung-Guru-Music-2-White.jpg",
+                "location": "Mirpur 11",
                 "resalePrice": "5000",
-                "original": "8000",
+                "original": "7000",
                 "yearUsed": "2",
-                "posted": ""
+                "posted": "25 nov, 2022"
             }
         ]
     },
     {
-        "id": "2",
+        
         "categoryName": "Smart Phone (Mid-Budget)",
         "categoryImg": "https://i.insider.com/5e83a064671de02c622dfd06?width=1200&format=jpeg",
         "categoryItem": [
             {
-                "name": "Nokia",
-                "sellerName": "Salman Khan",
-                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
-                "location": "Dhanmondi",
-                "resalePrice": "5000",
-                "original": "8000",
+                "name": "Samsung m31",
+                "sellerName": "Amir Khan",
+                "image": "https://www.mobiledokan.com/wp-content/uploads/2020/02/Samsung-Galaxy-M31.jpg",
+                "location": "Shamoli",
+                "resalePrice": "22000",
+                "original": "28000",
                 "yearUsed": "2",
-                "posted": ""
+                "posted": "25 nov, 2022"
             },
             {
-                "name": "Samsung",
-                "sellerName": "Salman Khan",
-                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "name": "Samsung f22",
+                "sellerName": "Hrittik",
+                "image": "https://www.mobiledokan.co/wp-content/uploads/2021/05/Samsung-Galaxy-F22-Denim-Blue.jpg",
                 "location": "Dhanmondi",
-                "resalePrice": "5000",
-                "original": "8000",
+                "resalePrice": "26000",
+                "original": "32000",
                 "yearUsed": "2",
-                "posted": ""
+                "posted": "25 nov, 2022"
             }
         ]
     },
     {
-        "id": "3",
+        
         "categoryName": "Smart Phone (High Budget)",
         "categoryImg": "https://static.digit.in/default/50c451fd60a33ae80e8475bf9d051f6e73dc580e.jpeg",
         "categoryItem": [
             {
-                "name": "Nokia",
-                "sellerName": "Salman Khan",
-                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "name": "Samsung s22",
+                "sellerName": "Maksudur Rahaman",
+                "image": "https://i0.wp.com/www.mobilebd.co/wp-content/uploads/2021/04/Samsung-Galaxy-S22-Plus-Official-Image-500x500.png",
                 "location": "Dhanmondi",
-                "resalePrice": "5000",
-                "original": "8000",
-                "yearUsed": "2",
-                "posted": ""
+                "resalePrice": "82000",
+                "original": "98000",
+                "yearUsed": "1",
+                "posted": "25 nov, 2022"
             },
             {
-                "name": "Samsung",
+                "name": "Iphone 12",
                 "sellerName": "Salman Khan",
-                "image": "https://www.mobileghor.com/wp-content/uploads/2021/07/Nokia-6310-Black.jpg",
+                "image": "https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12-spring21_purple_04202021_big.jpg.large.jpg",
                 "location": "Dhanmondi",
-                "resalePrice": "5000",
-                "original": "8000",
+                "resalePrice": "90000",
+                "original": "110000",
                 "yearUsed": "2",
-                "posted": ""
+                "posted": "25 nov, 2022"
             }
         ]
     }

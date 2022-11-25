@@ -6,7 +6,7 @@ const CategoryName = () => {
     const [categoryNames, setCategoryNames] = useState([]);
 
     useEffect(() => {
-        fetch('mobile.json')
+        fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => {
                 setCategoryNames(data)
@@ -18,7 +18,7 @@ const CategoryName = () => {
         <div className='lg:flex my-16'>
             {
                 categoryNames?.map(categoryNam => <CategoryNameCrd
-                    key={categoryNam.id}
+                    key={categoryNam._id}
                     categoryNam={categoryNam}
                     
                 ></CategoryNameCrd>)
