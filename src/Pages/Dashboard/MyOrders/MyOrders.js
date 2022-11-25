@@ -1,29 +1,53 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyOrders = () => {
+
+    const { user } = useContext(AuthContext);
+
+    const url = `http://localhost:5000/myOrders?email=${user.email}`;
+
+    const { data: myOrders = [] } = useQuery({
+        queryKey: ['myOrders', user.email],
+        queryFn: async () => {
+            const res = await fetch(url);
+            const data = await res.json();
+            return data;
+        }
+    })
+
+
     return (
         <div>
-            <h1 className="text-3xl">My Appointment</h1>
+            <h1 className="text-3xl my-8">My Orders</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
-                    
+
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Product</th>
+                            <th>Product Name</th>
+                            <th>price</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <tr className="hover">
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        
+
+                        {
+                            myOrders?.map((myOrder, i) => <tr className="hover"
+                                key={i}
+                            >
+                                <th>{i + 1}</th>
+                                <td><img className='w-16' src={myOrder.image} alt="" /></td>
+                                <td>{myOrder.itemName}</td>
+                                <td>{myOrder.price}</td>
+                                <td><button className='btn btn-xs'>Pay</button></td>
+                            </tr>)
+
+                        }
+
                     </tbody>
                 </table>
             </div>

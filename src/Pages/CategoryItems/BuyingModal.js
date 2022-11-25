@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const BuyingModal = ({ purchase, setPurchase }) => {
 
     const { user } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const { name, resalePrice } = purchase;
+    const from = location.state?.from?.pathname || '/';
+
+    const { name, resalePrice, image } = purchase;
 
     const handlePurchase = (event) => {
         event.preventDefault();
@@ -19,7 +24,7 @@ const BuyingModal = ({ purchase, setPurchase }) => {
         const location = form.location.value;
 
         const purchased = {
-            userName, email, itemName, price, phone, location
+            userName, email, itemName, price, phone, location, image: image
         }
 
         // console.log(purchased);
@@ -37,6 +42,7 @@ const BuyingModal = ({ purchase, setPurchase }) => {
                 if (data.acknowledged) {
 
                     setPurchase(null);
+                    navigate('/dashboard');
                     toast.success('Order Confirmed');
                 }
             })
