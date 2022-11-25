@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import CategoryItems from "../../Pages/CategoryItems/CategoryItems";
@@ -32,13 +33,21 @@ export const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: '/categoryItems',
-                element: <CategoryItems></CategoryItems>
+                path: '/categoryItems/:id',
+                element: <CategoryItems></CategoryItems>,
+                loader: ({params}) => fetch(`http://localhost:5000/categoryItems/${params.id}`)
             },
         ]
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            }
+        ]
     }
 ]);

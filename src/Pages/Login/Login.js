@@ -44,7 +44,7 @@ const Login = () => {
                         <input
                             {...register("email", { required: "Email is required" })}
                             type="email" className="input input-bordered w-full max-w-xs" />
-                        <input />
+                        
                         {errors.email && <p className='text-error' role="alert">{errors.email?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
@@ -54,10 +54,10 @@ const Login = () => {
                         <input
                             {...register("password", { required: "Password is required" })}
                             type="password" className="input input-bordered w-full max-w-xs" />
-                        <input />
+                        
                         {errors.password && <p className='text-error' role="alert">{errors.password?.message}</p>}
                     </div>
-                    <input className='btn w-full' value='Login' type="submit" />
+                    <input className='btn w-full mt-6' value='Login' type="submit" />
                 
                 </form>
                 <p className='text-center my-5'>New to Buy & Sell? <Link className='text-emerald-200 underline' to='/register'>Create Account</Link></p>
