@@ -96,13 +96,12 @@ const RegisterAsSeller = () => {
                             <input />
                             {errors.password && <p className='text-error' role="alert">{errors.password?.message}</p>}
                         </div>
-                        <input className='btn w-full' value='Sign up' type="submit" />
+                        <input className='btn w-full mb-5' value='Sign up' type="submit" />
 
                     </form>
-                    <Link to='/register' className=''>Buyer Register</Link>
-                    <p className='text-center my-5'><Link className='text-emerald-200 underline' to='/login'>Already have an account</Link></p>
-                    <div className="divider">OR</div>
-                    <button className='btn w-full my-2'>Continue With Google</button>
+                    <p className='text-center'><Link to='/register' className='bg-emerald-300 rounded-3xl px-2'>Buyer Register</Link></p>
+                    
+                    
                 </div>
             </div>
         </div>
