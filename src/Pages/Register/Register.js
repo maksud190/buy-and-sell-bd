@@ -25,17 +25,17 @@ const Register = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                .then(()=> {
-                    saveUser(data.email, data.name)
-                   
-                })
-                .catch(error=> console.log(error))
+                    .then(() => {
+                        saveUser(data.name, data.email)
+
+                    })
+                    .catch(error => console.log(error))
             })
             .catch(error => console.log(error));
     }
 
     const saveUser = (name, email) => {
-        const user = {name, email};
+        const user = { name, email };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -43,12 +43,15 @@ const Register = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            navigate(from, {replace: true});
-        })
+            .then(res => res.json())
+            .then(data => {
+                
+                
+
+            })
     }
+
+
 
     return (
         <div className='h-[800px] flex justify-center items-center'>
