@@ -100,6 +100,7 @@ const Register = () => {
                     <input className='btn w-full' value='Sign up' type="submit" />
 
                 </form>
+                <Link to='/registerSeller' className=''>Seller Register</Link>
                 <p className='text-center my-5'><Link className='text-emerald-200 underline' to='/login'>Already have an account</Link></p>
                 <div className="divider">OR</div>
                 <button className='btn w-full my-2'>Continue With Google</button>

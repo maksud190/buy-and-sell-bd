@@ -42,7 +42,7 @@ const BuyingModal = ({ purchase, setPurchase }) => {
                 if (data.acknowledged) {
 
                     setPurchase(null);
-                    navigate('/dashboard');
+                    navigate('/dashboard/myOrder');
                     toast.success('Order Confirmed');
                 }
             })
