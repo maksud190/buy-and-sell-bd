@@ -1,17 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
     const location = useLocation();
+
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token]= useToken(createdUserEmail);
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
+
+    if(token){
+        navigate(from, {replace: true});
+    }
 
     const handleRegister = data => {
         console.log(data);
@@ -46,7 +54,7 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 
-                
+                setCreatedUserEmail(email)
 
             })
     }
