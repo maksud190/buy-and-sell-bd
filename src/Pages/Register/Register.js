@@ -8,7 +8,7 @@ import useToken from '../../hooks/useToken';
 const Register = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { user, createUser, updateUser } = useContext(AuthContext);
+    const { user, createUser, updateUser, googleLogin } = useContext(AuthContext);
     const location = useLocation();
 
     const [createdUserEmail, setCreatedUserEmail] = useState('')
@@ -53,8 +53,6 @@ const Register = () => {
             .catch(error => console.log(error));
     }
 
-
-
     const saveUser = (name, email) => {
         const user = { name, email };
         fetch('http://localhost:5000/users', {
@@ -70,6 +68,22 @@ const Register = () => {
                 setCreatedUserEmail(email)
 
             })
+    }
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+            })
+            .catch(err => console.error(err))
     }
 
 
@@ -110,14 +124,14 @@ const Register = () => {
                         <input />
                         {errors.password && <p className='text-error' role="alert">{errors.password?.message}</p>}
                     </div>
-                    <input className='btn w-full mb-5' value='Sign up' type="submit" />
+                    <input className='btn bg-emerald-700 border-none w-full mb-5' value='Sign up' type="submit" />
 
                 </form>
-                    {/* <button onClick={() => allSellers(user._id)} type="radio" name="radio-1" className="radio" >Seller</button> */}
+                {/* <button onClick={() => allSellers(user._id)} type="radio" name="radio-1" className="radio" >Seller</button> */}
                 <p className='text-center'><Link to='/registerSeller' className='bg-emerald-300 rounded-3xl px-2'>Seller Register</Link></p>
                 <p className='text-center my-5'><Link className='text-emerald-600 underline' to='/login'>Already have an account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn w-full my-2'>Continue With Google</button>
+                <button onClick={handleGoogleLogin} className='btn bg-emerald-700 border-none w-full my-2'>Continue With Google</button>
             </div>
         </div>
     );

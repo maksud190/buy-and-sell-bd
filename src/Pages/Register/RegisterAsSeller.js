@@ -96,7 +96,7 @@ const RegisterAsSeller = () => {
                             <input />
                             {errors.password && <p className='text-error' role="alert">{errors.password?.message}</p>}
                         </div>
-                        <input className='btn w-full mb-5' value='Sign up' type="submit" />
+                        <input className='btn bg-emerald-700 border-none w-full mb-5' value='Sign up' type="submit" />
 
                     </form>
                     <p className='text-center'><Link to='/register' className='bg-emerald-300 rounded-3xl px-2'>Buyer Register</Link></p>

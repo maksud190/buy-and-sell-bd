@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import logo from '../../../Assets/images/logo.jpg';
 
 const Navbar = () => {
 
@@ -15,7 +16,7 @@ const Navbar = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex justify-center">
-                <Link to='/' className="btn btn-ghost normal-case text-xl">Buy & Sell</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl"> <img className='w-20 mx-2' src={logo} alt="" /> Buy & Sell</Link>
             </div>
 
 

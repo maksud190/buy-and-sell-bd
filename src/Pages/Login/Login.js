@@ -8,7 +8,7 @@ import Loading from '../Shared/Loading/Loading';
 const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { loginUser, loading } = useContext(AuthContext);
+    const { loginUser, loading, googleLogin } = useContext(AuthContext);
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
     const location = useLocation();
@@ -38,6 +38,15 @@ const Login = () => {
             .catch(error => console.log(error))
     }
 
+    const handleGoogleLogin = () => {
+        googleLogin()
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(err => console.error(err))
+    }
+
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
@@ -64,12 +73,12 @@ const Login = () => {
 
                         {errors.password && <p className='text-error' role="alert">{errors.password?.message}</p>}
                     </div>
-                    <input className='btn w-full mt-6' value='Login' type="submit" />
+                    <input className='btn bg-emerald-700 border-none w-full mt-6' value='Login' type="submit" />
 
                 </form>
-                <p className='text-center my-5'>New to Buy & Sell? <Link className='text-emerald-200 underline' to='/register'>Create Account</Link></p>
+                <p className='text-center my-5'>New to Buy & Sell? <Link className='text-emerald-600 underline' to='/register'>Create Account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn w-full my-2'>Continue With Google</button>
+                <button onClick={handleGoogleLogin} className='btn bg-emerald-700 border-none w-full my-2'>Continue With Google</button>
             </div>
         </div>
     );
