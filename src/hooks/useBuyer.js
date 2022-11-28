@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const useAdmin = email => {
+const useBuyer = email => {
 
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isUser, setIsUser] = useState(false);
 
     useEffect(() => {
         if (email) {
 
-            fetch(`https://buy-and-sell-bd-server.vercel.app/users/admin/${email}`, {
+            fetch(`https://buy-and-sell-bd-server.vercel.app/users/user/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -15,12 +15,12 @@ const useAdmin = email => {
                 .then(res => res.json())
                 .then(data => {
 
-                    setIsAdmin(data.isAdmin);
+                    setIsUser(data.isUser);
 
                 })
         }
     }, [email])
-    return [isAdmin];
+    return [isUser];
 }
 
-export default useAdmin;
+export default useBuyer;

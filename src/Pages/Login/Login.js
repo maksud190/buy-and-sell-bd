@@ -20,19 +20,20 @@ const Login = () => {
         navigate(from, { replace: true });
     }
 
-    // if(loading){
-    //     return <Loading></Loading>
-    // }
+    if(loading){
+        return <Loading></Loading>
+    }
 
     const handleLogin = data => {
-        console.log(data);
+        // console.log(data);
 
         loginUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
 
-                setLoginUserEmail(data.email)
+                setLoginUserEmail(data?.email)
+                // navigate(from, { replace: true });
 
             })
             .catch(error => console.log(error))
@@ -42,7 +43,7 @@ const Login = () => {
         googleLogin()
         .then(result => {
             const user = result.user;
-            console.log(user);
+            // console.log(user);
         })
         .catch(err => console.error(err))
     }
@@ -63,6 +64,7 @@ const Login = () => {
 
                         {errors.email && <p className='text-error' role="alert">{errors.email?.message}</p>}
                     </div>
+                    
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Password</span>

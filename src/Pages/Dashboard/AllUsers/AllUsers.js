@@ -8,6 +8,7 @@ const AllUsers = () => {
 
     const { user } = useContext(AuthContext);
     const [deletingUser, setDeletingUser] = useState(null);
+    
     const closeModal = ()=> {
         
         setDeletingUser(null);
@@ -17,31 +18,31 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users')
+            const res = await fetch('https://buy-and-sell-bd-server.vercel.app/users')
             const data = await res.json();
-            return data
+            return data;
         }
     })
 
-    const handleMakeAdmin = (id) => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
-            method: 'PUT',
-            headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    toast.success('successfully admin made');
-                    refetch();
-                }
-            })
+    // const handleMakeAdmin = (id) => {
+    //     fetch(`https://buy-and-sell-bd-server.vercel.app/users/admin/${id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             authorization: `bearer ${localStorage.getItem('accessToken')}`
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.modifiedCount > 0) {
+    //                 toast.success('successfully admin made');
+    //                 refetch();
+    //             }
+    //         })
 
-    }
+    // }
 
     const handleDeleteBuyer = (buyer) => {
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+        fetch(`https://buy-and-sell-bd-server.vercel.app/users/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -58,7 +59,7 @@ const AllUsers = () => {
 
     return (
         <div>
-            <h1 className="text-3xl my-8">My Orders</h1>
+            <h1 className="text-3xl my-8">All Buyers</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
@@ -67,7 +68,7 @@ const AllUsers = () => {
                             <th></th>
                             <th>User Name</th>
                             <th>Email</th>
-                            <th>admin</th>
+                            {/* <th>admin</th> */}
                             <th></th>
                             <th></th>
                         </tr>
@@ -81,9 +82,9 @@ const AllUsers = () => {
                                 <th>{i + 1}</th>
                                 <td>{user.name || user.displayName}</td>
                                 <td>{user.email}</td>
-                                <td>{user?.role !== 'admin' &&
+                                {/* <td>{user?.role !== 'admin' &&
                                     <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Admin</button>
-                                }</td>
+                                }</td> */}
                                 <td><button className='btn btn-xs'>Pay</button></td>
                                 <td>
                                     <label onClick={()=> setDeletingUser(user)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">Delete</label>

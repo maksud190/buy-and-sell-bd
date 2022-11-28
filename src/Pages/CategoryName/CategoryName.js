@@ -6,11 +6,11 @@ const CategoryName = () => {
     const [categoryNames, setCategoryNames] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://buy-and-sell-bd-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => {
                 setCategoryNames(data)
-                console.log(data);
+                
             })
     }, [])
 

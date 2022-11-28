@@ -29,7 +29,7 @@ const BuyingModal = ({ purchase, setPurchase }) => {
 
         // console.log(purchased);
 
-        fetch('http://localhost:5000/myOrders', {
+        fetch('https://buy-and-sell-bd-server.vercel.app/myOrders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,7 +38,7 @@ const BuyingModal = ({ purchase, setPurchase }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.acknowledged) {
 
                     setPurchase(null);

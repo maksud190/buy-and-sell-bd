@@ -11,8 +11,8 @@ const Register = () => {
     const { user, createUser, updateUser, googleLogin } = useContext(AuthContext);
     const location = useLocation();
 
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
-    const [token] = useToken(createdUserEmail);
+    const [createdSellerEmail, setCreatedSellerEmail] = useState('')
+    const [token] = useToken(createdSellerEmail);
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
@@ -23,7 +23,7 @@ const Register = () => {
 
 
     // const allSellers = id => {
-    //     fetch(`http://localhost:5000/users/seller/${id}`, {
+    //     fetch(`https://buy-and-sell-bd-server.vercel.app/users/seller/${id}`, {
     //         method: 'PUT'
     //     })
     //         .then(res => res.json())
@@ -33,19 +33,20 @@ const Register = () => {
     // }
 
     const handleRegister = data => {
-        console.log(data);
+        // console.log(data);
 
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 toast("User Created Successfully");
-                console.log(user);
+                navigate(from, { replace: true });
+                // console.log(user);
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email)
+                        saveUser(data.name, data.email, data.uid)
 
                     })
                     .catch(error => console.log(error))
@@ -53,19 +54,20 @@ const Register = () => {
             .catch(error => console.log(error));
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
-        fetch('http://localhost:5000/users', {
+    const saveUser = (name, email, uid) => {
+        const user = { name, email, uid };
+        fetch('https://buy-and-sell-bd-server.vercel.app/users', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                
             },
             body: JSON.stringify(user)
         })
             .then(res => res.json())
             .then(data => {
 
-                setCreatedUserEmail(email)
+                setCreatedSellerEmail(email)
 
             })
     }
@@ -74,8 +76,8 @@ const Register = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                fetch('http://localhost:5000/users', {
+                // console.log(user);
+                fetch('https://buy-and-sell-bd-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -101,7 +103,7 @@ const Register = () => {
                         <input
                             {...register("name", { required: "Name is required" })}
                             type="text" className="input input-bordered w-full max-w-xs" />
-                        <input />
+                        
                         {errors.name && <p className='text-error' role="alert">{errors.name?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
@@ -111,8 +113,15 @@ const Register = () => {
                         <input
                             {...register("email", { required: "Email is required" })}
                             type="email" className="input input-bordered w-full max-w-xs" />
-                        <input />
+                        
                         {errors.email && <p className='text-error' role="alert">{errors.email?.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs hidden">
+                        
+                        <input defaultValue="225544"
+                            {...register("uid")}
+                            type="text" className="input input-bordered w-full max-w-xs" />
+
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
@@ -128,7 +137,7 @@ const Register = () => {
 
                 </form>
                 {/* <button onClick={() => allSellers(user._id)} type="radio" name="radio-1" className="radio" >Seller</button> */}
-                <p className='text-center'><Link to='/registerSeller' className='bg-emerald-300 rounded-3xl px-2'>Seller Register</Link></p>
+                <p className='text-center'><Link to='/registerSeller' className='bg-emerald-300 rounded-3xl px-2'>Register as a Seller</Link></p>
                 <p className='text-center my-5'><Link className='text-emerald-600 underline' to='/login'>Already have an account</Link></p>
                 <div className="divider">OR</div>
                 <button onClick={handleGoogleLogin} className='btn bg-emerald-700 border-none w-full my-2'>Continue With Google</button>

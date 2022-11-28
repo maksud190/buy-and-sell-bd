@@ -18,17 +18,18 @@ const RegisterAsSeller = () => {
     const from = location.state?.from?.pathname || '/';
 
     if (token) {
-        navigate(from, { replace: true });
+        navigate('/');
     }
 
     const handleSellerRegister = data => {
-        console.log(data);
+        // console.log(data);
 
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 toast("User Created Successfully");
-                console.log(user);
+                // navigate(from, { replace: true });
+                // console.log(user);
                 const userInfo = {
                     displayName: data.name
                 }
@@ -44,10 +45,11 @@ const RegisterAsSeller = () => {
 
     const saveUser = (name, email) => {
         const user = { name, email };
-        fetch('http://localhost:5000/sellers', {
+        fetch('https://buy-and-sell-bd-server.vercel.app/sellers', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(user)
         })
@@ -73,7 +75,7 @@ const RegisterAsSeller = () => {
                             <input
                                 {...register("name", { required: "Name is required" })}
                                 type="text" className="input input-bordered w-full max-w-xs" />
-                            <input />
+                            
                             {errors.name && <p className='text-error' role="alert">{errors.name?.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
@@ -83,7 +85,7 @@ const RegisterAsSeller = () => {
                             <input
                                 {...register("email", { required: "Email is required" })}
                                 type="email" className="input input-bordered w-full max-w-xs" />
-                            <input />
+                            
                             {errors.email && <p className='text-error' role="alert">{errors.email?.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
@@ -99,7 +101,7 @@ const RegisterAsSeller = () => {
                         <input className='btn bg-emerald-700 border-none w-full mb-5' value='Sign up' type="submit" />
 
                     </form>
-                    <p className='text-center'><Link to='/register' className='bg-emerald-300 rounded-3xl px-2'>Buyer Register</Link></p>
+                    <p className='text-center'><Link to='/register' className='bg-emerald-300 rounded-3xl px-2'>Register as a Buyer</Link></p>
                     
                     
                 </div>
